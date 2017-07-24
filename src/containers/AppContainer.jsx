@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import { Header, Footer } from '../components';
+import HeaderContainer from './HeaderContainer';
+import FooterContainer from './FooterContainer';
+import ContentContainer from './ContentContainer';
 
 class AppContainer extends Component {
   render() {
     return (
       <div className="app">
-        <Header className="app-header" />
-        <div className="app-content">
-          {this.props.children}
-        </div>
-        <Footer className="app-header" />
+        <HeaderContainer />
+        <ContentContainer {...this.props} />
+        <FooterContainer />
       </div>
     )
   }

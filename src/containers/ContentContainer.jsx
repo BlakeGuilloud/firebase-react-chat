@@ -5,7 +5,11 @@ import { Content } from '../components';
 
 class ContentContainer extends Component {
   render() {
-    return <Content />;
+    return (
+      <div className="app-content">
+        {this.props.children}
+      </div>
+    );
   }
 };
 
