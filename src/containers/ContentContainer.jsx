@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import { Content } from '../components';
-
 class ContentContainer extends Component {
   render() {
     return (
