@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import moment from 'moment';
 import {
   Col,
   Row,
@@ -20,15 +21,21 @@ const Chat = (props) => {
 
   const renderPost = key => {
     const post = posts[key];
+    const timestamp = moment(post.time).format('MMMM Do YYYY, h:mm:ss a');
 
     return (
       <Row key={key} className="post-item">
         <div className="post-item-author">
-          Blake
-          <span className="post-item-timestamp">5 / 25 / 2018 5:00PM</span>
+          {post.author}
+          &nbsp;
+          |
+          &nbsp;
+          <span className="post-item-timestamp">
+            {timestamp}
+          </span>
         </div> 
         <div className="post-item-message">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae asperiores dolores autem velit officiis, non, ipsa corporis. Voluptatum nobis, quod fugiat, nemo, aliquid, labore repellat doloremque rerum reiciendis accusantium itaque!
+          {post.message}
         </div>
       </Row>
     );
@@ -54,7 +61,7 @@ const Chat = (props) => {
                 </FormGroup>
               </Col>
               <Col md={3} sm={12}>
-                <Button block={12} onClick={handleSubmit}>
+                <Button block onClick={handleSubmit}>
                   Send Message
                 </Button>
               </Col>

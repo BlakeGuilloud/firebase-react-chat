@@ -49,9 +49,11 @@ class ChatContainer extends Component {
   handleSubmit = e => {
     e.preventDefault();
 
+    if (!this.state.message) return;
+
     this.postsRef.push({
-      message: 'A meessaag!',
-      author: 'Blake',
+      message: this.state.message,
+      author: this.state.author || 'Anonymous',
       time: Date.now(),
     })
     .then(() => this.setState({ message: '' }));
