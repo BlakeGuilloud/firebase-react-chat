@@ -17,6 +17,7 @@ const Chat = (props) => {
     handleChange,
     postsLoading,
     message,
+    author,
   } = props;
 
   const renderPost = key => {
@@ -33,7 +34,7 @@ const Chat = (props) => {
           <span className="post-item-timestamp">
             {timestamp}
           </span>
-        </div> 
+        </div>
         <div className="post-item-message">
           {post.message}
         </div>
@@ -45,11 +46,12 @@ const Chat = (props) => {
       <Row>
         <Col className="app-chat-container" xsOffset={1} xs={10} smOffset={2} sm={8}>
           <div id="chat" className="posts-container">
+            {postsLoading && <div>Loading...</div>}
             {postIds.map(renderPost)}
           </div>
           <div className="message-container">
             <Row>
-              <Col md={9} sm={12}>
+              <Col sm={12}>
                 <FormGroup>
                   <FormControl
                     type="text"
@@ -60,7 +62,18 @@ const Chat = (props) => {
                   />
                 </FormGroup>
               </Col>
-              <Col md={3} sm={12}>
+              <Col sm={12}>
+                <FormGroup>
+                  <FormControl
+                    type="text"
+                    name="author"
+                    value={author}
+                    onChange={handleChange}
+                    placeholder="Your name"
+                  />
+                </FormGroup>
+              </Col>
+              <Col sm={12}>
                 <Button block onClick={handleSubmit}>
                   Send Message
                 </Button>
@@ -80,6 +93,7 @@ Chat.PropTypes = {
   handleChange: PropTypes.func.isRequired,
   postsLoading: PropTypes.bool.isRequired,
   message: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
 }
 
 export default Chat;

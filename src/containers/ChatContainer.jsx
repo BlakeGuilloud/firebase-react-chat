@@ -10,6 +10,7 @@ class ChatContainer extends Component {
     postIds: [],
     postsLoading: true,
     message: '',
+    author: '',
   };
 
   componentWillMount() {
