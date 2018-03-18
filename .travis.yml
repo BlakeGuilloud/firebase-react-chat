@@ -1,0 +1,9 @@
+deploy:
+  provider: s3
+  access_key_id: AKIAJC5ZIUINOWH7ARRA
+  secret_access_key:
+    secure: oVDPaPfvaHkQAqkIgMoBwauD9v8C2RaWgVb/XfCLt1QzA6eXWlDlz6BaFcpkfmwF6xgIo+pGGHTiV3d3/nNXMJNIdY+p4GsPFBzed/j9d/o8eSVXeSH7z9o/byVRGVEzhdObEeQhm8m0rH3DodsxXAx7Tqu8kJVO2BSddSR8LT2RW3bAAUIKq88wz4iaiCQnr7V9zp3oLdSG3NmN/D1STJBT9kdmQXsc92bHUED4lKK0+UnLckT3sQ3oiRshEtyfaHlEISAGbdL1XglQ7XPXmgc2sPe8biaXnOUKz2mWy5SNlwOojMFL6KlVTIdrfUZ35NlJa4pMsK/X+gXRXcfdu7MW1pqmXBOXgZbXtkLfZhsZUAkIUAgi4M62MRq7jiuWqPB9ontwFZXMVXLVLqkcTQbRkDGgrnmW575ihIX3RO87jGuaIO02HP4b6QZGBC5ucW51moAF1w6quI93ilOHzRZ0MqzMHTRGQJLBPplLsqRcUNauWJd7VjeleiGwLQGQnAfWEemCI3HB/rWHMPCcR/C/nGS1fsGFbizGimbMraCbQUhKCAJqTw5KCAaofFI/+7hHFQs2XpnNvxyHp9zk3SJKJp3qfws7uHdnVucMI5m+EhPbC8JHeuLA56EVRT2pRJmnjQLa2cL3B7SBQ+nN/TL5Xk/0u5WjYOyIYyDjGwE=
+  bucket: firebase-react-chat
+  acl: public_read
+  on:
+    repo: BlakeGuilloud/firebase-react-chat
