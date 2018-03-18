@@ -1,99 +1,144 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
-import {
-  Col,
-  Row,
-  FormGroup,
-  FormControl,
-  Button,
-} from 'react-bootstrap';
+import { format as formatDate } from 'date-fns';
+import styled from 'styled-components';
+
+const ChatWrapper = styled.div`
+  width: 60%;
+  margin: 0 auto;
+  flex: 1;
+  height: 90vh;
+  @media(max-width: 700px) {
+    width: 90%;
+  }
+`;
+
+const PostWrapper = styled.div`
+  background-color: white;
+  overflow: scroll;
+  height: 55vh;
+  border-radius: 10px;
+  border: 1px solid black;
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #495057;
+`;
+
+const ActionsWrapper = styled.div`
+  background-color: white;
+  border-radius: 10px;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+`;
+
+const ActionsInput = styled.input.attrs({
+  type: 'text'
+})`
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  margin-bottom: 20px;
+`;
+
+const ActionsButton = styled.button`
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  border: 1px solid #ced4da;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  color: #495057;
+  width: 200px;
+  cursor: pointer;
+  margin: 0 auto;
+`;
+
+const PostItem = styled.div`
+  border-top: 1px solid #ced4da;
+  margin-top: 15px;
+  padding-top: 15px;
+`;
+
+const PostItemDetails = styled.div`
+  span {
+    font-weight: 600;
+  }
+`;
 
 const Chat = (props) => {
   const {
+    author,
+    handleChange,
+    handleSubmit,
+    message,
     postIds,
     posts,
-    handleSubmit,
-    handleChange,
     postsLoading,
-    message,
-    author,
   } = props;
 
   const renderPost = key => {
     const post = posts[key];
-    const timestamp = moment(post.time).format('MMMM Do YYYY, h:mm:ss a');
+    const timestamp = formatDate(post.time, 'MMMM Do YYYY, h:mm:ss');
 
     return (
-      <Row key={key} className="post-item">
-        <div className="post-item-author">
-          {post.author}
+      <PostItem>
+        <PostItemDetails>
+          <span>{post.author}</span>
           &nbsp;
           |
           &nbsp;
-          <span className="post-item-timestamp">
+          <span>
             {timestamp}
           </span>
-        </div>
-        <div className="post-item-message">
+        </PostItemDetails>
+        <div>
           {post.message}
         </div>
-      </Row>
+      </PostItem>
     );
-  }
+  };
+
   return (
-    <div className="app-chat">
-      <Row>
-        <Col className="app-chat-container" xsOffset={1} xs={10} smOffset={2} sm={8}>
-          <div id="chat" className="posts-container">
-            {postsLoading && <div>Loading...</div>}
-            {postIds.map(renderPost)}
-          </div>
-          <div className="message-container">
-            <Row>
-              <Col sm={12}>
-                <FormGroup>
-                  <FormControl
-                    type="text"
-                    name="message"
-                    value={message}
-                    onChange={handleChange}
-                    placeholder="Message"
-                  />
-                </FormGroup>
-              </Col>
-              <Col sm={12}>
-                <FormGroup>
-                  <FormControl
-                    type="text"
-                    name="author"
-                    value={author}
-                    onChange={handleChange}
-                    placeholder="Your name"
-                  />
-                </FormGroup>
-              </Col>
-              <Col sm={12}>
-                <Button block onClick={handleSubmit}>
-                  Send Message
-                </Button>
-              </Col>
-            </Row>
-          </div>
-        </Col>
-      </Row>
-    </div>
+    <ChatWrapper>
+      <PostWrapper id="chat">
+        {postsLoading && <div>Loading...</div>}
+        {postIds.map(renderPost)}
+      </PostWrapper>
+      <ActionsWrapper>
+        <ActionsInput value={message} name="message" onChange={handleChange} placeholder="Message" />
+        <ActionsInput value={author} name="author" onChange={handleChange} placeholder="Author" />
+        <ActionsButton onClick={handleSubmit}>
+          Send Message
+        </ActionsButton>
+      </ActionsWrapper>
+    </ChatWrapper>
   );
 };
 
 Chat.PropTypes = {
+  author: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleSubmit: PropTypes.func.isRequired,
+  message: PropTypes.string.isRequired,
   postIds: PropTypes.array.isRequired,
   posts: PropTypes.object.isRequired,
-  handleSubmit: PropTypes.func.isRequired,
-  handleChange: PropTypes.func.isRequired,
   postsLoading: PropTypes.bool.isRequired,
-  message: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-}
+};
 
 export default Chat;

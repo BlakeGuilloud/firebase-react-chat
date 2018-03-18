@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 class ContentContainer extends Component {
   render() {
     return (
-      <div className="app-content">
+      <div>
         {this.props.children}
       </div>
     );

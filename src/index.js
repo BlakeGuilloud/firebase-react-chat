@@ -5,7 +5,7 @@ import { browserHistory } from 'react-router';
 import Routes from './routes';
 import { registerServiceWorker } from './utils';
 
-require('./App.css');
+require('./index.css');
 
 ReactDOM.render(
   <Routes history={browserHistory} />,
