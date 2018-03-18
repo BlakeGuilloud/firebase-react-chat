@@ -9,7 +9,7 @@ class ContentContainer extends Component {
       </div>
     );
   }
-};
+}
 
 ContentContainer.propTypes = {
   children: PropTypes.node.isRequired,

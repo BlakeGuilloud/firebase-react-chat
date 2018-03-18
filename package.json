@@ -12,7 +12,6 @@
     "styled-components": "^3.2.3"
   },
   "devDependencies": {
-    "av1-scripts": "^1.0.6",
     "react-scripts": "1.0.10"
   },
   "scripts": {
@@ -20,6 +19,6 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "deploy": "yarn build &&  aws s3 sync build s3://firebase-react-chat"
+    "deploy": "yarn && yarn build && aws s3 sync build s3://firebase-react-chat"
   }
 }

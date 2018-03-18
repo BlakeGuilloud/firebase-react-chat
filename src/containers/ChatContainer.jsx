@@ -17,7 +17,7 @@ class ChatContainer extends Component {
     firebase.initializeApp(config);
 
     this.postsRef = firebase.database().ref('posts');
-    
+
     this.postsRef.on('value', (snapshot) => {
       const posts = snapshot.val();
 
@@ -72,6 +72,6 @@ class ChatContainer extends Component {
 
     return <Chat {...props} />;
   }
-};
+}
 
 export default ChatContainer;

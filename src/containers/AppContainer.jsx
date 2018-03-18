@@ -20,8 +20,8 @@ class AppContainer extends Component {
         <HeaderContainer />
         <ContentContainer {...this.props} />
       </App>
-    )
+    );
   }
-};
+}
 
 export default AppContainer;

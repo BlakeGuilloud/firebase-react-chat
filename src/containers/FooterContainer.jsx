@@ -6,6 +6,6 @@ class FooterContainer extends Component {
   render() {
     return <Footer />;
   }
-};
+}
 
 export default FooterContainer;

@@ -5,5 +5,5 @@ import Footer from './Footer';
 export {
   Chat,
   Header,
-  Footer,
+  Footer
 };

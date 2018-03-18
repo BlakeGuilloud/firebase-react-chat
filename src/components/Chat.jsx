@@ -36,7 +36,7 @@ const ActionsWrapper = styled.div`
 `;
 
 const ActionsInput = styled.input.attrs({
-  type: 'text'
+  type: 'text',
 })`
   display: block;
   width: 80%;
