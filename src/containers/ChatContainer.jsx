@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as firebase from 'firebase';
 
-import config from '../firebase-config';
+// import config from '../firebase-config';
 import { Chat } from '../components';
 
 class ChatContainer extends Component {
@@ -14,7 +14,14 @@ class ChatContainer extends Component {
   };
 
   componentWillMount() {
-    firebase.initializeApp(config);
+    firebase.initializeApp({
+      apiKey: process.env.FIREBASE_API_KEY,
+      authDomain: "react-chat-5fdc1.firebaseapp.com",
+      databaseURL: "https://react-chat-5fdc1.firebaseio.com",
+      projectId: "react-chat-5fdc1",
+      storageBucket: "",
+      messagingSenderId: "774610124444"
+    });
 
     this.postsRef = firebase.database().ref('posts');
 
