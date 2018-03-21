@@ -15,7 +15,7 @@ const Header = (props) => {
       <span>
         FireChat
       </span>
-      &nbsp;||&nbsp;
+      &nbsp;|||&nbsp;
       <span>
         Blake Guilloud
       </span>
